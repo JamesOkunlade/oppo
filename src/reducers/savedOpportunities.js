@@ -1,4 +1,4 @@
-const initialStore = {
+  const initialStore = {
     savedOpportunities: [],
     isFetching: false,
     error: null,
