@@ -1,13 +1,13 @@
 import React from "react";
 
-const Opportunity = () => {
+const OpportunityCard = () => {
   return (
     <div className="">
     </div>
   );
 };
 
-export default Opportunity;
+export default OpportunityCard;
 
 
 
