@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 
 
-const OpportunityCard = ({ id, objective, type }) => {
+const SavedOpportunityCard = ({ id, objective, type }) => {
   return (
     <section className="card">
           <div>
@@ -16,7 +16,7 @@ const OpportunityCard = ({ id, objective, type }) => {
   );
 };
 
-export default OpportunityCard;
+export default SavedOpportunityCard;
 
 
 

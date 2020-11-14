@@ -17,7 +17,7 @@ Variables
   --clr-primary-dark: hsl(205, 100%, 21%);
   --clr-primary-light: hsl(205, 84%, 74%);
   --clr-grey-1: #102a42;
-  --clr-grey-5: #617d98;
+  --clr-grey-5: #c5d6e6;
   --clr-grey-10: #f1f5f8;
   --clr-white: #fff;
   --clr-red-dark: hsl(360, 67%, 44%);
@@ -44,6 +44,7 @@ body {
 }
 a {
   text-decoration: none;
+  color: var(--clr-grey-1);
 }
 img {
   width: 100%;
@@ -221,9 +222,15 @@ Cart Item
 ===============
 */
 .card {
-  display: block;
+  
+  display: grid;
   align-items: center;
-  margin: 1.5rem 0;
+  grid-template-columns: auto 1fr auto;
+  grid-column-gap: 1.5rem;
+  padding: 1.5rem 10px;
+}
+.card:hover {
+  background: var(--clr-grey-5);
 }
 
 .cart-item img {

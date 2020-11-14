@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 export const REQUEST_OPPORTUNITIES = 'REQUEST_OPPORTUNITIES';
 export const RECEIVE_OPPORTUNITIES = 'RECEIVE_OPPORTUNITIES';
 export const ERROR_REQUESTING_OPPORTUNITIES = 'ERROR_REQUESTING_OPPORTUNITIES';
@@ -53,7 +52,7 @@ function requestSavedOpportunities() {
 function receiveSavedOpportunities(response) {
     return {
         type: RECEIVE_SAVED_OPPORTUNITIES,
-        opportunities: response,
+        savedOpportunities: response.data
     }
 }
 
@@ -65,18 +64,33 @@ function errorRequestingSavedOpportunities(error) {
 }
 
 export function fetchSavedOpportunities() {
-    return async function(dispatch) {
+    return function(dispatch) {
         dispatch(requestSavedOpportunities())
-        try {
-            const response = await fetch(`http://localhost:3000/savedOpportunities`);
-            const response_1 = await response.json();
-            return dispatch(receiveSavedOpportunities(response_1));
-        }
-        catch (error) {
+        axios.get('http://localhost:3000/opportunities')
+        .then(function (response) {
+            console.log(response.data);
+            return dispatch(receiveSavedOpportunities(response));
+        })
+        .catch(function (error) {
+            console.log(error);
             return dispatch(errorRequestingSavedOpportunities(error));
-        }
+        });
     }
 }
+
+// export function fetchSavedOpportunities() {
+//     return async function(dispatch) {
+//         dispatch(requestSavedOpportunities())
+//         try {
+//             const response = await fetch(`http://localhost:3000/opportunities`);
+//             const response_1 = await response.json();
+//             return dispatch(receiveSavedOpportunities(response_1));
+//         }
+//         catch (error) {
+//             return dispatch(errorRequestingSavedOpportunities(error));
+//         }
+//     }
+// }
 
 
 export const analyze = () => {

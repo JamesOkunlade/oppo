@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 
 import {
   ButtonContainer,
@@ -22,12 +24,8 @@ const Header = ({ isFullBackground, imageSource, fetchOpportunities }) => {
         <Heading>OPPO</Heading>
         <Paragraph>Welcome to the world of opportunities</Paragraph>
         <ButtonContainer>
-            <ButtonPrimary>
-              Search
-            </ButtonPrimary>
-            <ButtonSecondary>
-              View saved
-            </ButtonSecondary>
+            <Link to={`/`}><ButtonPrimary>Search</ButtonPrimary></Link>
+            <Link to={`/savedopportunities/`}><ButtonSecondary>View saved</ButtonSecondary></Link>
         </ButtonContainer>
       </HeroContainer>
     </HeroCTALayout>
