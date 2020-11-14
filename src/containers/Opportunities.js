@@ -12,7 +12,7 @@ class Opportunities extends Component {
   }
 
   render() {    
-    const { opportunities = [], isFetching } = this.props.opportunities;
+    const { opportunities = [] } = this.props.opportunities;
     const opportunitiesList = opportunities.map((opportunity) =>  (<OpportunityCard key={opportunity.id} opportunity={opportunity} />))
 
     return (

@@ -7,7 +7,7 @@ import {
 } from "../../actions";
 
 const SavedOpportunityCard = (props) => {
-  const { id, objective, details, compensation, remove } = props.opportunity
+  const { id, objective, details, compensation } = props.opportunity
   return (
     <section className="card">
           <div>
@@ -22,9 +22,7 @@ const SavedOpportunityCard = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  const { id } = ownProps;
-
+const mapDispatchToProps = (dispatch) => {
   return {
     remove: (id) => dispatch(remove(id)),
   }
