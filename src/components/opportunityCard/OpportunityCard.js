@@ -6,16 +6,16 @@ import {
   save
 } from "../../actions";
 
-const OpportunityCard = ({ id, objective, type, save }) => {
+const OpportunityCard = (props) => {
+  const { id, objective, type, save } = props.opportunity
   return (
     <section className="card">
           <div>
-            <p>{id}</p>
             <Link to={`/opportunity/${id}`}><h3>{objective}</h3></Link>
             <p>{type}</p>
           </div>
           <div>
-            <button className="btn add-btn" onClick={() => save()}>Add</button>
+            <button className="btn add-btn" onClick={() => props.save(id)}>Add</button>
           </div>
     </section>
   );
@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const { id } = ownProps;
 
   return {
-    save: () => dispatch(save(id)),
+    save: (id) => dispatch(save(id)),
   }
 };
 

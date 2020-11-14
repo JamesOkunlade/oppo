@@ -6,17 +6,17 @@ import {
   remove,
 } from "../../actions";
 
-const SavedOpportunityCard = ({ id, objective, details, compensation, remove }) => {
+const SavedOpportunityCard = (props) => {
+  const { id, objective, details, compensation, remove } = props.opportunity
   return (
     <section className="card">
           <div>
-            <p>{id}</p>
             <Link to={`/opportunity/${id}`}><h3>{objective}</h3></Link>
             <p>{details}</p>
             <p>Compensation: {compensation} USD/hour</p>
           </div>
           <div>
-            <button className="btn add-btn" onClick={() => remove()}>Remove</button>
+            <button className="btn add-btn" onClick={() => props.remove(id)}>Remove</button>
           </div>
     </section>
   );
@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const { id } = ownProps;
 
   return {
-    remove: () => dispatch(remove(id)),
+    remove: (id) => dispatch(remove(id)),
   }
 };
 

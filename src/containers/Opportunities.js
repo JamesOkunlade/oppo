@@ -13,6 +13,8 @@ class Opportunities extends Component {
 
   render() {    
     const { opportunities = [], isFetching } = this.props.opportunities;
+    const opportunitiesList = opportunities.map((opportunity) =>  (<OpportunityCard key={opportunity.id} opportunity={opportunity} />))
+
     return (
       <div>
         <section className=""> 
@@ -20,14 +22,7 @@ class Opportunities extends Component {
         </section>
         <section className="oppo_card"> 
           <article>
-            {opportunities.map((opportunity, index) => {
-              return (
-                <div>
-                  <OpportunityCard key={index} {...opportunity} />
-                  <hr/>
-                </div>
-              ) ;
-            })}
+            { opportunitiesList }
           </article>
         </section>
       </div>

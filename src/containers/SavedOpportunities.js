@@ -7,6 +7,8 @@ import SavedOpportunityCard from "../components/savedOpportunityCard/SavedOpport
 
 const SavedOpportunities = (props) => {
   const { savedOpportunities = [], removing } = props.savedOpportunities;
+  const savedOpportunitiesList = savedOpportunities.map((opportunity) =>  (<SavedOpportunityCard key={opportunity.id} opportunity={opportunity} />))
+
 
   useEffect(() => {
     props.fetchSavedOpportunities();
@@ -19,14 +21,15 @@ const SavedOpportunities = (props) => {
         </section>
         <section className="oppo_card"> 
           <article>
-            {savedOpportunities.map((opportunity, index) => {
+            {/* {savedOpportunities.map((opportunity, index) => {
               return (
                 <div>
                   <SavedOpportunityCard key={index} {...opportunity} />
                   <hr/>
                 </div>
               ) ;
-            })}
+            })} */}
+            { savedOpportunitiesList }
           </article>
         </section>
       </div>
