@@ -2,7 +2,7 @@ import React from "react";
 
 const OpportunityCard = ({ id, objective, type }) => {
   return (
-    <section>
+    <section className="card">
             <h3>{objective}</h3>
             <p>{type}</p>
     </section>

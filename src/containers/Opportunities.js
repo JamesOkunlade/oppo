@@ -1,22 +1,32 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 
-import Search from "../components/search/Search"
+import { fetchOpportunities } from "../actions";
+import Header from "../components/header/Header"
 import OpportunityCard from "../components/opportunityCard/OpportunityCard"
 
 
 class Opportunities extends Component {
+  componentDidMount() {
+    this.props.fetchOpportunities();
+  }
+
   render() {    
     const { opportunities = [], isFetching } = this.props.opportunities;
     return (
       <div>
         <section className=""> 
-          <Search />
+          <Header />
         </section>
         <section className="cart"> 
           <article>
             {opportunities.map((opportunity, index) => {
-              return <OpportunityCard key={index} {...opportunity} />;
+              return (
+                <div>
+                  <OpportunityCard key={index} {...opportunity} />
+                  <hr/>
+                </div>
+              ) ;
             })}
           </article>
         </section>
@@ -32,7 +42,14 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Opportunities);
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchOpportunities: () => dispatch(fetchOpportunities())
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Opportunities);
 
 
 

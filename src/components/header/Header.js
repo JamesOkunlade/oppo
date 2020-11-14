@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
 
-import { fetchOpportunities } from "../../actions";
 import {
   ButtonContainer,
   ButtonPrimary,
@@ -13,17 +12,17 @@ import {
 } from "./styles";
 import PropTypes from "prop-types";
 
-const Search = ({ isFullBackground, imageSource, fetchOpportunities }) => {
+const Header = ({ isFullBackground, imageSource, fetchOpportunities }) => {
   return (
     <HeroCTALayout>
       <HeroContainer
         isFullBackground={isFullBackground}
         imageSource={imageSource}
       >
-        <Heading>Welcome to the world of Opportunites</Heading>
-        <Paragraph>SubHeading</Paragraph>
+        <Heading>OPPO</Heading>
+        <Paragraph>Welcome to the world of opportunities</Paragraph>
         <ButtonContainer>
-            <ButtonPrimary onClick={() => fetchOpportunities()}>
+            <ButtonPrimary>
               Search
             </ButtonPrimary>
             <ButtonSecondary>
@@ -35,12 +34,12 @@ const Search = ({ isFullBackground, imageSource, fetchOpportunities }) => {
   );
 }
 
-Search.defaultProps = {
+Header.defaultProps = {
   isFullBackground: true,
   imageSource: "https://assets.bytehub.dev/images/hero-background.svg",
 };
 
-Search.propTypes = {
+Header.propTypes = {
   isFullBackground: PropTypes.bool,
   onPrimaryBtnClick: PropTypes.func,
   onSecondaryBtnClick: PropTypes.func,
@@ -49,8 +48,7 @@ Search.propTypes = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchOpportunities: () => dispatch(fetchOpportunities())
   }
 }
 
-export default connect(null, mapDispatchToProps)(Search);
+export default connect(null, mapDispatchToProps)(Header);
