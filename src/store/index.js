@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
 
 import opportunities from '../reducers/opportunities.js';
+import savedOpportunities from '../reducers/savedOpportunities.js';
 
 const rootReducer = combineReducers({
     opportunities: opportunities,
-    saved_opportunities: saved_opportunities
+    savedOpportunities: savedOpportunities
 })
 
 export default rootReducer;

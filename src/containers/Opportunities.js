@@ -1,13 +1,38 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+
+import Search from "../components/search/Search"
+import OpportunityCard from "../components/opportunityCard/OpportunityCard"
+
 
 class Opportunities extends Component {
   render() {    
+    const { opportunities = [], isFetching } = this.props.opportunities;
     return (
-      <section className="cart"> 
-      </section>
+      <div>
+        <section className=""> 
+          <Search />
+        </section>
+        <section className="cart"> 
+          <article>
+            {opportunities.map((opportunity, index) => {
+              return <OpportunityCard key={index} {...opportunity} />;
+            })}
+          </article>
+        </section>
+      </div>
     )
   }
 }
 
 
-export default Opportunities;
+const mapStateToProps = (state) => {
+  return {
+    opportunities: state.opportunities
+  };
+};
+
+export default connect(mapStateToProps)(Opportunities);
+
+
+

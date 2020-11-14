@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const REQUEST_OPPORTUNITIES = 'REQUEST_OPPORTUNITIES';
 export const RECEIVE_OPPORTUNITIES = 'RECEIVE_OPPORTUNITIES';
 export const ERROR_REQUESTING_OPPORTUNITIES = 'ERROR_REQUESTING_OPPORTUNITIES';
@@ -15,7 +17,7 @@ function requestOpportunities() {
 function receiveOpportunities(response) {
     return {
         type: RECEIVE_OPPORTUNITIES,
-        opportunities: response.results,
+        opportunities: response,
     }
 }
 
@@ -26,30 +28,18 @@ function errorRequestingOpportunities(error) {
     }
 }
 
-
-// axios.post('/user', {
-//     firstName: 'Fred',
-//     lastName: 'Flintstone'
-//   })
-//   .then(function (response) {
-//     console.log(response);
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });
-
-
 export function fetchOpportunities() {
-    return async function(dispatch) {
+    return function(dispatch) {
         dispatch(requestOpportunities())
-        try {
-            const response = await post(`https://search.torre.co/opportunities/_search`);
-            const response_1 = await response.json();
-            return dispatch(receiveOpportunities(response_1));
-        }
-        catch (error) {
+        axios.post('https://search.torre.co/opportunities/_search/?size=20', {})
+        .then(function (response) {
+            console.log(response.data.results);
+            return dispatch(receiveOpportunities(response.data.results));
+        })
+        .catch(function (error) {
+            console.log(error);
             return dispatch(errorRequestingOpportunities(error));
-        }
+        });
     }
 }
 
