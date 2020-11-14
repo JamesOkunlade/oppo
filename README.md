@@ -38,7 +38,6 @@ npm start
 ## Live Version
 
 This is live served at - 
-[Oppo]()
 
 
 ## Author
