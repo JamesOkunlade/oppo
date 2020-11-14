@@ -21,14 +21,6 @@ const SavedOpportunities = (props) => {
         </section>
         <section className="oppo_card"> 
           <article>
-            {/* {savedOpportunities.map((opportunity, index) => {
-              return (
-                <div>
-                  <SavedOpportunityCard key={index} {...opportunity} />
-                  <hr/>
-                </div>
-              ) ;
-            })} */}
             { savedOpportunitiesList }
           </article>
         </section>
