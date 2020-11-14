@@ -9,7 +9,6 @@ const SavedOpportunities = (props) => {
   const { savedOpportunities = [], removing } = props.savedOpportunities;
   const savedOpportunitiesList = savedOpportunities.map((opportunity) =>  (<SavedOpportunityCard key={opportunity.id} opportunity={opportunity} />))
 
-
   useEffect(() => {
     props.fetchSavedOpportunities();
   }, [removing]);
