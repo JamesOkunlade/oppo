@@ -7,8 +7,6 @@ This is job listing and saving platform. The jobs are fetched from Torre.
 The backend api can be found [here](https://github.com/JamesOkunlade/oppo-api)
 
 
-- Node
-
 ## Installation
 
 - Clone the repository and get inside it:
