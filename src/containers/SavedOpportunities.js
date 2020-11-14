@@ -5,13 +5,13 @@ import { fetchSavedOpportunities } from "../actions";
 import Header from "../components/header/Header"
 import SavedOpportunityCard from "../components/savedOpportunityCard/SavedOpportunityCard"
 
-const SavedOpportunities = (props) => {
-  const { savedOpportunities = [], removing } = props.savedOpportunities;
-  const savedOpportunitiesList = savedOpportunities.map((opportunity) =>  (<SavedOpportunityCard key={opportunity.id} opportunity={opportunity} />))
-
+const SavedOpportunities = ({ savedOpportunities, dispatch}) => {
+  const savedOpportunitiesList = savedOpportunities.savedOpportunities
+  .map((opportunity) =>  (<SavedOpportunityCard key={opportunity.id} opportunity={opportunity} />))
+  
   useEffect(() => {
-    props.fetchSavedOpportunities();
-  }, [removing]);
+    dispatch(fetchSavedOpportunities())
+  }, [savedOpportunities.removing, dispatch]);
 
   return (
     <div>
@@ -33,13 +33,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchSavedOpportunities: () => dispatch(fetchSavedOpportunities())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SavedOpportunities);
+export default connect(mapStateToProps)(SavedOpportunities);
 
 
 

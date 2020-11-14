@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
 
 import {
   save
@@ -11,7 +10,7 @@ const OpportunityCard = (props) => {
   return (
     <section className="card">
           <div>
-            <Link to={`/opportunity/${id}`}><h3>{objective}</h3></Link>
+            <h3>{objective}</h3>
             <p>{type}</p>
           </div>
           <div>

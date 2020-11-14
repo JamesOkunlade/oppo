@@ -68,6 +68,7 @@ function errorRequestingSavedOpportunities(error) {
     }
 }
 
+
 export function fetchSavedOpportunities() {
     return function(dispatch) {
         dispatch(requestSavedOpportunities())
