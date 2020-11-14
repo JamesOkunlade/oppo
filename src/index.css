@@ -108,6 +108,7 @@ p {
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
+
 .btn:hover {
   color: var(--clr-primary);
   background: var(--clr-primary-light);
@@ -136,11 +137,12 @@ p {
 }
 
 .card {
-  display: grid;
+  display: block;
   align-items: center;
   grid-template-columns: auto 1fr auto;
   grid-column-gap: 1.5rem;
   padding: 1.5rem 10px;
+  border-bottom: 2px solid #ff6d7f;
 }
 
 .card:hover {

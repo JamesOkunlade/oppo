@@ -15,7 +15,7 @@ const OpportunityCard = (props) => {
             <p>{type}</p>
           </div>
           <div>
-            <button className="btn add-btn" onClick={() => props.save(id)}>Add</button>
+            <button className="btn" onClick={() => props.save(id)}>Add</button>
           </div>
     </section>
   );

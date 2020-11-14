@@ -16,7 +16,7 @@ const SavedOpportunityCard = (props) => {
             <p>Compensation: {compensation} USD/hour</p>
           </div>
           <div>
-            <button className="btn add-btn" onClick={() => props.remove(id)}>Remove</button>
+            <button className="btn" onClick={() => props.remove(id)}>Remove</button>
           </div>
     </section>
   );
