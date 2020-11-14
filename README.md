@@ -28,7 +28,14 @@ npm start
 
 ```
 
-## Documentation
+- Backend connections:
+
+```
+Find the src/actions/index.js and uncomment either localhost or live url depending on what you want to make your connection to.
+
+It is connected to the live url by default
+```
+
 
 ## Technology Used
 
