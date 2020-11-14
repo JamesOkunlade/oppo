@@ -4,6 +4,8 @@
 
 This is job listing and saving platform. The jobs are fetched from Torre.
 
+The backend api can be found [here](https://github.com/JamesOkunlade/oppo-api)
+
 
 - Node
 
@@ -30,11 +32,11 @@ npm start
 
 - Backend connections:
 
-```
-Find the src/actions/index.js and uncomment either localhost or live url depending on what you want to make your connection to.
+
+Find the `src/actions/index.js` and uncomment either `localhost` or `live url` depending on what you want to make your connection to.
 
 It is connected to the live url by default
-```
+
 
 
 ## Technology Used
