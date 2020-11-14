@@ -1,11 +1,13 @@
 import {
   REQUEST_SAVED_OPPORTUNITIES,
   RECEIVE_SAVED_OPPORTUNITIES,
-  ERROR_REQUESTING_SAVED_OPPORTUNITIES
+  ERROR_REQUESTING_SAVED_OPPORTUNITIES,
+  REMOVING,
 } from "../actions";
 
 const initialStore = {
     savedOpportunities: [],
+    removing: null,
     isFetching: false,
     error: null,
   };
@@ -32,6 +34,13 @@ const initialStore = {
               ...state,
               isFetching: false,
               error: action.error
+          }
+      }
+      
+      case REMOVING: {
+          return {
+              ...state,
+              removing: action.removing
           }
       }
 

@@ -176,7 +176,7 @@ nav svg {
 Cart
 ===============
 */
-.cart {
+.oppo_card {
   min-height: calc(100vh - 80px);
   width: 90vw;
   margin: 0 auto;

@@ -1,7 +1,5 @@
 import React from "react";
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
 
 import {
   ButtonContainer,
@@ -44,9 +42,4 @@ Header.propTypes = {
   imageSource: PropTypes.string,
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-  }
-}
-
-export default connect(null, mapDispatchToProps)(Header);
+export default Header;

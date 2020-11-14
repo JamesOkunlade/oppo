@@ -18,7 +18,7 @@ class Opportunities extends Component {
         <section className=""> 
           <Header />
         </section>
-        <section className="cart"> 
+        <section className="oppo_card"> 
           <article>
             {opportunities.map((opportunity, index) => {
               return (
@@ -35,7 +35,6 @@ class Opportunities extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
   return {
     opportunities: state.opportunities
@@ -47,7 +46,6 @@ const mapDispatchToProps = dispatch => {
     fetchOpportunities: () => dispatch(fetchOpportunities())
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Opportunities);
 

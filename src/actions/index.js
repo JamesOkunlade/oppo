@@ -5,7 +5,14 @@ export const ERROR_REQUESTING_OPPORTUNITIES = 'ERROR_REQUESTING_OPPORTUNITIES';
 export const REQUEST_SAVED_OPPORTUNITIES = 'REQUEST_SAVED_OPPORTUNITIES';
 export const RECEIVE_SAVED_OPPORTUNITIES = 'RECEIVE_SAVED_OPPORTUNITIES';
 export const ERROR_REQUESTING_SAVED_OPPORTUNITIES = 'ERROR_REQUESTING_SAVED_OPPORTUNITIES';
-export const ANALYZE = "ANALYZE"
+export const BEGIN_SAVING = "BEGIN_SAVING";
+export const SAVE = "SAVE";
+export const ERROR_SAVING = "ERROR_SAVING";
+export const REMOVING = "REMOVING";
+
+const URL = "http://localhost:3000"
+// const URL = "https://obscure-castle-68155.herokuapp.com/"
+
 
 function requestOpportunities() {
     return {
@@ -32,11 +39,9 @@ export function fetchOpportunities() {
         dispatch(requestOpportunities())
         axios.post('https://search.torre.co/opportunities/_search/?size=20', {})
         .then(function (response) {
-            console.log(response.data.results);
             return dispatch(receiveOpportunities(response.data.results));
         })
         .catch(function (error) {
-            console.log(error);
             return dispatch(errorRequestingOpportunities(error));
         });
     }
@@ -66,36 +71,65 @@ function errorRequestingSavedOpportunities(error) {
 export function fetchSavedOpportunities() {
     return function(dispatch) {
         dispatch(requestSavedOpportunities())
-        axios.get('http://localhost:3000/opportunities')
+        axios.get(`${URL}/opportunities`)
         .then(function (response) {
-            console.log(response.data);
             return dispatch(receiveSavedOpportunities(response));
         })
         .catch(function (error) {
-            console.log(error);
             return dispatch(errorRequestingSavedOpportunities(error));
         });
     }
 }
 
-// export function fetchSavedOpportunities() {
-//     return async function(dispatch) {
-//         dispatch(requestSavedOpportunities())
-//         try {
-//             const response = await fetch(`http://localhost:3000/opportunities`);
-//             const response_1 = await response.json();
-//             return dispatch(receiveSavedOpportunities(response_1));
-//         }
-//         catch (error) {
-//             return dispatch(errorRequestingSavedOpportunities(error));
-//         }
-//     }
-// }
 
-
-export const analyze = () => {
-    return { 
-        type: ANALYZE, payload: { } 
+function beginSaving() {
+    return {
+        type: BEGIN_SAVING
     }
-};
+}
+function saving(response) {
+    return {
+        type: SAVE,
+        save: response.data,
+    }
+}
+function errorSaving(error) {
+    return {
+        type: ERROR_SAVING,
+        error: error,
+    }
+}
 
+export function save(id) {
+    return function(dispatch) {
+        dispatch(beginSaving())
+        axios.post(`${URL}/opportunities`, { oppo_id: id })
+        .then(function (response) {
+            return dispatch(saving(response));
+        })
+        .catch(function (error) {
+            return dispatch(errorSaving(error));
+        });
+    }
+}
+
+
+function removing(id) {
+    return {
+        type: REMOVING,
+        removing: id,
+    }
+}
+
+export function remove(id) {
+    return function(dispatch) {
+        axios.delete(`${URL}/opportunities/${id}`, { })
+        .then(function (response) {
+            dispatch(removing(id))
+            return response
+        })
+        .catch(function (error) {
+            return error
+        });
+    }
+}

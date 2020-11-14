@@ -1,23 +1,23 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { connect } from 'react-redux';
+
 import { fetchSavedOpportunities } from "../actions";
 import Header from "../components/header/Header"
 import SavedOpportunityCard from "../components/savedOpportunityCard/SavedOpportunityCard"
 
+const SavedOpportunities = (props) => {
+  const { savedOpportunities = [], removing } = props.savedOpportunities;
 
-class savedOpportunities extends Component {
-  componentDidMount() {
-    this.props.fetchSavedOpportunities();
-  }
+  useEffect(() => {
+    props.fetchSavedOpportunities();
+  }, [removing]);
 
-  render() {    
-    const { savedOpportunities = [], isFetching } = this.props.savedOpportunities;
-    return (
-      <div>
+  return (
+    <div>
         <section className=""> 
           <Header />
         </section>
-        <section className="cart"> 
+        <section className="oppo_card"> 
           <article>
             {savedOpportunities.map((opportunity, index) => {
               return (
@@ -30,12 +30,10 @@ class savedOpportunities extends Component {
           </article>
         </section>
       </div>
-    )
-  }
+  )
 }
 
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     savedOpportunities: state.savedOpportunities
   };
@@ -47,8 +45,12 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+export default connect(mapStateToProps, mapDispatchToProps)(SavedOpportunities);
 
-export default connect(mapStateToProps, mapDispatchToProps)(savedOpportunities);
+
+
+
+
 
 
 
